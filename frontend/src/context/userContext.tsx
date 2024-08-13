@@ -6,7 +6,9 @@ interface UserContextType {
   setUserContext: React.Dispatch<React.SetStateAction<UserInfo | null>>;
 }
 
-const UserContext = createContext<UserContextType | undefined>(undefined);
+export const UserContext = createContext<UserContextType | undefined>(
+  undefined
+);
 
 export const useUserContext = (): UserContextType => {
   const context = useContext(UserContext);

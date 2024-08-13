@@ -1,9 +1,16 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { describe, expect, test } from "@jest/globals";
+import { render } from "@testing-library/react";
+import App from "./App";
+import React from "react";
+import { UserProvider } from "./context/userContext";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("test App", () => {
+  test(" should present ", () => {
+    const app = render(
+      <UserProvider>
+        <App />
+      </UserProvider>
+    );
+    expect(app).toBeTruthy();
+  });
 });

@@ -9,8 +9,6 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { userContext } = useUserContext();
-
-  console.log("userContext", userContext);
   if (!userContext?.id) {
     return <Navigate to="/" replace />;
   }
