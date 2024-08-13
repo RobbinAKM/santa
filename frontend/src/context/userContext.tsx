@@ -10,6 +10,12 @@ export const UserContext = createContext<UserContextType | undefined>(
   undefined
 );
 
+/**
+ * Custom hook to access user context. Throws an error if used outside of a UserProvider.
+ * @returns {UserContextType} The user context value.
+ * @throws {Error} Throws an error if the hook is used outside of UserProvider.
+ */
+
 export const useUserContext = (): UserContextType => {
   const context = useContext(UserContext);
   if (!context) {
@@ -21,6 +27,13 @@ export const useUserContext = (): UserContextType => {
 interface UserProviderProps {
   children: ReactNode;
 }
+
+/**
+ * UserProvider component that provides the user context to its children.
+ * Manages the state for user information and provides it to the context consumers.
+ * @param {UserProviderProps} props - The properties passed to the component, including children elements.
+ * @returns {JSX.Element} - The rendered UserProvider component.
+ */
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [userContext, setUserContext] = useState<UserInfo | null>(null);

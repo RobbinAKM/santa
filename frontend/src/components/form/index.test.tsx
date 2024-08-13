@@ -5,7 +5,6 @@ import Form from "./index";
 import { UserContext } from "../../context/userContext";
 import useCheckUser from "../../hooks/useUser";
 import useHandleUserData from "../../hooks/useHandleUserData";
-import DOMPurify from "dompurify";
 
 // Mock the hooks
 jest.mock("../../hooks/useUser", () => ({

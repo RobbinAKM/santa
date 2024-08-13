@@ -21,6 +21,10 @@ const useSaveUserData = ({ userData }: UseSaveUserDataProps) => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
 
+  /**
+   * Function to save user data via a POST request to the API.
+   */
+
   const saveUserData = async () => {
     setLoading(true);
     setError(null);

@@ -13,6 +13,11 @@ interface UseHandleNavigationProps {
   message: string;
 }
 
+/**
+ * Custom hook to handle user data based on various conditions and navigate accordingly.
+ * @param {UseHandleNavigationProps} params - The parameters including form submission status, user existence, age status, loading state, error, user info, and message.
+ */
+
 const useHandleUserData = ({
   submitted,
   exists,

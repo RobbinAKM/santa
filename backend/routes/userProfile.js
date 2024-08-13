@@ -55,7 +55,6 @@ const fetchUser = async (userId, res) => {
 router.get("/", async (req, res) => {
   try {
     const combinedData = await fetchUserProfiles();
-    console.log(combineUserProfileData(combinedData));
     res.json(combineUserProfileData(combinedData)); // Send combined data as JSON response
   } catch (error) {
     console.error("Error in route handler:", error); // Detailed error logging
