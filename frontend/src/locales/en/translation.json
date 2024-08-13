@@ -1,0 +1,12 @@
+{
+  "USER_NOT_FOUND": "🚫 Uh-oh! It seems the user ID {{id}} does not exist in our records. Please double-check and try again! 🔍",
+  "MORE_THAN_TEN": " 🚫 Uh-oh! {{name}}! It looks like you're over ten years old! 🎈 You’re in the big leagues now! 🌟",
+  "SOMETHING_WENT_WRONG": "Something went wrong. The page you're looking for could not be found.",
+  "BACK": "Go Back",
+  "SUCCESS": "Success!  ",
+  "SUCCESS_MESSAGE": "Hey ! your message has been successfully received and will be sent to Santa soon! 🎅✨",
+  "FORM_MESSAGE": "Send Your Message To Santa",
+  "ID": "ID",
+  "MESSAGE": "Message",
+  "SUBMIT": "Submit"
+}

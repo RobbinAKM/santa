@@ -19,6 +19,7 @@ export interface UserInfo {
   address?: string;
   birthdate?: string;
   isUnderTen?: boolean;
+  exists?: boolean;
 }
 
 const axiosInstance = axios.create({
@@ -27,7 +28,7 @@ const axiosInstance = axios.create({
 
 const useCheckUser = ({ id, submitted }: UseCheckUserIdProps) => {
   const [exists, setExists] = useState<boolean>(false);
-  const [isUnderTen, setIsUnderTen] = useState<boolean>(false);
+  const [isUnderTen, setIsUnderTen] = useState<boolean>(true); // assume all kids are under 10 and can write message to santa
   const [userInfo, setUserInfo] = useState<UserInfo>();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -49,6 +50,7 @@ const useCheckUser = ({ id, submitted }: UseCheckUserIdProps) => {
           setUserContext({
             ...response.data.user,
             isUnderTen: response.data.isUnderTen,
+            exists: true,
           });
           setError(null);
         } catch (err) {
@@ -63,7 +65,7 @@ const useCheckUser = ({ id, submitted }: UseCheckUserIdProps) => {
 
       checkUserId();
     }
-  }, [id, submitted]); // Depend on both id and submitted
+  }, [id, submitted, setUserContext]); // Depend on both id and submitted
 
   return { exists, isUnderTen, userInfo, loading, error };
 };

@@ -42,7 +42,16 @@ const useHandleUserData = ({
     if (error || !isUnderTen) {
       navigate("/error");
     }
-  }, [submitted, exists, isUnderTen, loading, error, success, navigate]);
+  }, [
+    saveUserData,
+    submitted,
+    exists,
+    isUnderTen,
+    loading,
+    error,
+    success,
+    navigate,
+  ]);
 };
 
 export default useHandleUserData;
