@@ -1,10 +1,17 @@
-// tests/userDataRoutes.test.js
-const request = require("supertest");
-const express = require("express");
-const router = require("./userMessage");
+import request from "supertest";
+import express, { Express } from "express";
+import router from "./userMessage";
+
+// Define the types for your user data
+interface UserData {
+  id: string;
+  name: string;
+  address: string;
+  message: string;
+}
 
 describe("User Data Routes", () => {
-  let app;
+  let app: Express;
 
   beforeAll(() => {
     app = express();
@@ -14,11 +21,11 @@ describe("User Data Routes", () => {
 
   afterEach(() => {
     // Clear the userDataStore after each test to prevent state leakage between tests
-    router.userDataStore = [];
+    (router as any).userDataStore = [];
   });
 
   test("saves user data successfully", async () => {
-    const userData = {
+    const userData: UserData = {
       id: "1",
       name: "John Doe",
       address: "123 Main St",
@@ -47,7 +54,7 @@ describe("User Data Routes", () => {
   });
 
   test("appends a new message for an existing user", async () => {
-    const userData = {
+    const userData: UserData = {
       id: "1",
       name: "John Doe",
       address: "123 Main St",
@@ -56,7 +63,7 @@ describe("User Data Routes", () => {
 
     await request(app).post("/saveUserData").send(userData);
 
-    const newMessageData = {
+    const newMessageData: UserData = {
       id: "1",
       name: "John Doe",
       address: "123 Main St",
@@ -72,13 +79,13 @@ describe("User Data Routes", () => {
   });
 
   test("returns all messages", async () => {
-    const userData1 = {
+    const userData1: UserData = {
       id: "1",
       name: "John Doe",
       address: "123 Main St",
       message: "Hello, World!",
     };
-    const userData2 = {
+    const userData2: UserData = {
       id: "2",
       name: "Jane Doe",
       address: "456 Elm St",
@@ -108,7 +115,7 @@ describe("User Data Routes", () => {
   });
 
   test("marks messages as sent and removes the user", async () => {
-    const userData = {
+    const userData: UserData = {
       id: "1",
       name: "John Doe",
       address: "123 Main St",

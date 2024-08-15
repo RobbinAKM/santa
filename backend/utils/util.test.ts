@@ -9,7 +9,7 @@ describe("isLessThanTenYearsOld", () => {
 
   test("returns true if the person is exactly 10 years old", () => {
     const birthdate = "2014/08/15"; // A birthdate that makes the person exactly 10 years old
-    expect(isLessThanTenYearsOld(birthdate)).toBe(true);
+    expect(isLessThanTenYearsOld(birthdate)).toBe(false);
   });
 
   test("returns false if the person is older than 10 years", () => {
@@ -21,7 +21,7 @@ describe("isLessThanTenYearsOld", () => {
     const birthdate = "2012/02/29"; // A leap year birthdate
     // Adjust the test date if running in a year where February 29 does not exist
     const today = new Date();
-    const isLeapYear = (year) =>
+    const isLeapYear = (year: number) =>
       (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 
     // Calculate if the current year is a leap year

@@ -1,10 +1,10 @@
 /**
- * Checks if a person is exactly 10 years old based on their birthdate.
+ * Checks if a person is less than 10 years old based on their birthdate.
  *
- * @param {string} birthdate - The birthdate of the person in "YYYY/MM/DD" format.
- * @returns {boolean} Returns true if the person is exactly 10 years old today, otherwise false.
+ * @param birthdate - The birthdate of the person in "YYYY/MM/DD" format.
+ * @returns Returns true if the person is less than 10 years old today, otherwise false.
  */
-function isLessThanTenYearsOld(birthdate) {
+function isLessThanTenYearsOld(birthdate: string): boolean {
   const birthDateParts = birthdate.split("/");
   const birthYear = parseInt(birthDateParts[0], 10);
   const birthMonth = parseInt(birthDateParts[1], 10) - 1; // Months are zero-indexed
@@ -28,4 +28,4 @@ function isLessThanTenYearsOld(birthdate) {
   return age < 10;
 }
 
-module.exports = { isLessThanTenYearsOld };
+export { isLessThanTenYearsOld };

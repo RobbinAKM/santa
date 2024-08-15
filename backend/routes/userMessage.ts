@@ -1,11 +1,25 @@
-const express = require("express");
-const router = express.Router();
+import { Router, Request, Response } from "express";
+
+const router: Router = Router();
+
+// Interface for a user entry
+interface UserEntry {
+  message: string;
+}
+
+// Interface for user data
+interface UserData {
+  id: string;
+  name: string;
+  address: string;
+  entries: UserEntry[];
+}
 
 // In-memory store for user data
-let userDataStore = [];
+let userDataStore: UserData[] = [];
 
 // Route to handle saving user data
-router.post("/saveUserData", (req, res) => {
+router.post("/saveUserData", (req: Request, res: Response) => {
   const { id, name, address, message } = req.body;
 
   if (!id || !name || !address || !message) {
@@ -41,7 +55,7 @@ router.post("/saveUserData", (req, res) => {
 });
 
 // Route to get user data (for testing purposes)
-router.get("/getAllMessages", (req, res) => {
+router.get("/getAllMessages", (req: Request, res: Response) => {
   if (userDataStore) {
     res.status(200).json(userDataStore);
   } else {
@@ -50,7 +64,7 @@ router.get("/getAllMessages", (req, res) => {
 });
 
 // Route to mark messages as sent
-router.post("/markMessagesAsSent", (req, res) => {
+router.post("/markMessagesAsSent", (req: Request, res: Response) => {
   const { id } = req.body;
 
   // Find the user and mark their entries as sent
@@ -66,4 +80,4 @@ router.post("/markMessagesAsSent", (req, res) => {
   res.status(200).send("Messages marked as sent");
 });
 
-module.exports = router;
+export default router;

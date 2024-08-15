@@ -1,13 +1,14 @@
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const routes = require("./routes/index");
-require("./cronJob");
+import express, { Express } from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
+import routes from "./routes/index";
+import "./cronJob";
 
 // Load environment variables
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
-const app = express();
+const app: Express = express();
 
 // Enable CORS for all routes
 app.use(cors());
@@ -18,7 +19,7 @@ app.use(bodyParser.json());
 // Import and use the routes from the "routes" folder
 app.use("/", routes); // Ensure routes are mounted at a specific path
 
-const PORT = process.env.PORT || 8080;
+const PORT: number = parseInt(process.env.PORT as string, 10) || 8080;
 
 // Start the server
 app.listen(PORT, () => {

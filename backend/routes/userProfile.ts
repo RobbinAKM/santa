@@ -1,16 +1,36 @@
-const axios = require("axios");
-const express = require("express");
+import axios, { AxiosResponse } from "axios";
+import express, { Request, Response } from "express";
+import {
+  combineUserProfileData,
+  CombinedData as CombineDataFromUtils,
+} from "../utils/combineUserData";
+import { isLessThanTenYearsOld } from "../utils/checkAge";
+
 const router = express.Router();
-const { combineUserProfileData } = require("../utils/combineUserData");
-const { isLessThanTenYearsOld } = require("../utils/checkAge");
+
+interface User {
+  uid: string;
+  username: string;
+}
+
+interface Profile {
+  userUid: string;
+  address: string;
+  birthdate: string;
+}
+
+interface CombinedData {
+  users: User[];
+  profiles: Profile[];
+}
 
 // Function to fetch and combine user data and profiles
-const fetchUserProfiles = async () => {
+const fetchUserProfiles = async (): Promise<CombinedData> => {
   try {
-    const userResponse = await axios.get(
+    const userResponse: AxiosResponse<User[]> = await axios.get(
       "https://raw.githubusercontent.com/alj-devops/santa-data/master/users.json"
     );
-    const profileResponse = await axios.get(
+    const profileResponse: AxiosResponse<Profile[]> = await axios.get(
       "https://raw.githubusercontent.com/alj-devops/santa-data/master/userProfiles.json"
     );
 
@@ -19,13 +39,13 @@ const fetchUserProfiles = async () => {
       users: userResponse.data,
       profiles: profileResponse.data,
     };
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error fetching user data:", error.message);
     throw error; // Rethrow the error for handling in route
   }
 };
 
-const fetchUser = async (userId, res) => {
+const fetchUser = async (userId: string, res: Response): Promise<void> => {
   try {
     // Fetch combined user and profile data
     const combinedData = await fetchUserProfiles();
@@ -34,7 +54,7 @@ const fetchUser = async (userId, res) => {
     const userData = combineUserProfileData(combinedData);
 
     // Find the user with the specified ID
-    const user = userData.find((user) => user.id === userId);
+    const user = userData.find((user: any) => user.id === userId);
 
     const isUnderTen = user && isLessThanTenYearsOld(user.birthdate);
 
@@ -45,27 +65,27 @@ const fetchUser = async (userId, res) => {
       // User not found, send a 404 response
       res.status(404).send("User not found");
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error in route handler:", error);
     res.status(500).send("Internal Server Error");
   }
 };
 
 // Define routes
-router.get("/", async (req, res) => {
+router.get("/", async (req: Request, res: Response) => {
   try {
     const combinedData = await fetchUserProfiles();
     res.json(combineUserProfileData(combinedData)); // Send combined data as JSON response
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error in route handler:", error); // Detailed error logging
     res.status(500).send("Internal Server Error"); // Send a generic error message
   }
 });
 
-router.get("/user/:id", async (req, res) => {
+router.get("/user/:id", async (req: Request, res: Response) => {
   const { id } = req.params; // Get userId from request parameters
   await fetchUser(id, res); // Fetch user and respond
 });
 
 // Export the router
-module.exports = router;
+export default router;
