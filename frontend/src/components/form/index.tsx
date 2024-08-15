@@ -47,7 +47,10 @@ const Form: React.FC = () => {
       name === "id" ? value.trim().replace(/\s+/g, "") : value;
 
     setSubmitted(false);
-    setUserData((prevData) => ({ ...prevData, [name]: sanitizedValue }));
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: DOMPurify.sanitize(sanitizedValue),
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
