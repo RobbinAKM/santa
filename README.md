@@ -98,7 +98,11 @@ License
   <img width="626" alt="Screenshot 2024-08-15 at 1 45 06" src="https://github.com/user-attachments/assets/3d9c5dc4-8abd-442c-8c96-99f2d3f7a4b4">
   <img width="686" alt="Screenshot 2024-08-15 at 1 45 59" src="https://github.com/user-attachments/assets/6f73720a-122f-4bd3-b57b-b24ea900d1d8">
 
+## Asynchronous Message Queue
+- An asynchronous message queue allows tasks to be processed independently and efficiently without blocking the main execution flow. In our application:
 
+- Purpose: It ensures that tasks like sending emails and updating statuses are handled in the background, enhancing scalability and reliability.I use the async library to create queues that manage the sending of emails and updating user data. Each task is processed sequentially, ensuring that no task is missed and system resources are optimally used.
+- Benefits: This approach prevents the application from becoming unresponsive during heavy loads, as tasks are queued and executed as resources become available.
 
 # Frontend Dependencies
 @testing-library/user-event: Provides utilities to simulate user interactions in testing environments, making it easier to write more realistic and meaningful tests.
