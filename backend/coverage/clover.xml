@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723721627774" clover="3.2.0">
-  <project timestamp="1723721627774" name="All files">
+<coverage generated="1723740157621" clover="3.2.0">
+  <project timestamp="1723740157622" name="All files">
     <metrics statements="261" coveredstatements="251" conditionals="34" coveredconditionals="28" methods="4" coveredmethods="4" elements="299" coveredelements="283" complexity="0" loc="261" ncloc="261" packages="2" files="4" classes="4"/>
     <package name="routes">
       <metrics statements="174" coveredstatements="166" conditionals="24" coveredconditionals="19" methods="2" coveredmethods="2"/>
-      <file name="userMessage.ts" path="/Users/robbinmin/Desktop/santa/backend/routes/userMessage.ts">
+      <file name="userMessage.ts" path="/Users/robbinmin/test/santa/backend/routes/userMessage.ts">
         <metrics statements="83" coveredstatements="81" conditionals="14" coveredconditionals="13" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -90,7 +90,7 @@
         <line num="82" count="1" type="stmt"/>
         <line num="83" count="1" type="stmt"/>
       </file>
-      <file name="userProfile.ts" path="/Users/robbinmin/Desktop/santa/backend/routes/userProfile.ts">
+      <file name="userProfile.ts" path="/Users/robbinmin/test/santa/backend/routes/userProfile.ts">
         <metrics statements="91" coveredstatements="85" conditionals="10" coveredconditionals="6" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -187,7 +187,7 @@
     </package>
     <package name="utils">
       <metrics statements="87" coveredstatements="85" conditionals="10" coveredconditionals="9" methods="2" coveredmethods="2"/>
-      <file name="checkAge.ts" path="/Users/robbinmin/Desktop/santa/backend/utils/checkAge.ts">
+      <file name="checkAge.ts" path="/Users/robbinmin/test/santa/backend/utils/checkAge.ts">
         <metrics statements="31" coveredstatements="29" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -221,7 +221,7 @@
         <line num="30" count="1" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
       </file>
-      <file name="combineUserData.ts" path="/Users/robbinmin/Desktop/santa/backend/utils/combineUserData.ts">
+      <file name="combineUserData.ts" path="/Users/robbinmin/test/santa/backend/utils/combineUserData.ts">
         <metrics statements="56" coveredstatements="56" conditionals="7" coveredconditionals="7" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
